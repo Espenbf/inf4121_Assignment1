@@ -2,8 +2,6 @@ package telerik;
 
 import java.util.Scanner;
 
-
-
 public class Game {
 	public static void main(String[] args){
 		generirane labyrinth = new generirane();
@@ -13,17 +11,13 @@ public class Game {
 			while((labyrinth.playersCurrentColumn!=0)&&(labyrinth.playersCurrentColumn!=6)
 					&&(labyrinth.playersCurrentRow!=0)&&(labyrinth.playersCurrentRow!=6)){
 				labyrinth.inputCommand();
-				
-				
-				
+	
 			}
 			System.out.println();
 			labyrinth.printMaze();
 			System.out.println("Congratulations! You escaped in "+labyrinth.playersMovesCount+" moves.");
 			System.out.println();
-			
-			
-			
+				
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("Enter your name : ");
 			String name = scanner.next();
@@ -37,8 +31,5 @@ public class Game {
 			labyrinth.playersCurrentRow = 3;
 			labyrinth.playersMovesCount = 0;
 		}
-		
-		
-		
 	}
 }

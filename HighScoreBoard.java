@@ -4,56 +4,26 @@ import java.util.LinkedList;
 
 
 public class HighScoreBoard {
-	LinkedList list;
+	LinkedList<Player> list;
 	public final int boardSize = 5;
 	public HighScoreBoard(){
-		list = new LinkedList();
+		list = new LinkedList<Player>();
 	}
 	
 	public boolean addPlayerToChart(Player player){
-		if(list.size()==0){
-			list.addFirst(player);
+		list.add(player);
+		list.sort(null);
+		if (list.size() > 5){
+			list.removeLast();
+		}
+		if (list.contains(player)){
 			return true;
-		}	
-		Player pl = (Player) list.get(list.size()-1);
-		if((list.size()>0)&&(list.size()<boardSize)){	
-			if(player.movesCount>pl.movesCount){
-				list.addLast(player);
-				return true;
-			}
-			int index = 0;
-			while(index<list.size()){
-				pl = (Player) list.get(index);
-				if(player.movesCount<=pl.movesCount){
-					
-					
-					{
-						list.add(index,player);
-					}
-				return true;
-				}
-				index++;
-			}
 		}
-		if((list.size()==boardSize)) {
-			if((player.movesCount<pl.movesCount)){
-				list.remove(list.size() - 1);
-				int index = 0;
-				while (index < list.size()) {
-					pl = (Player) list.get(index);
-					if (player.movesCount <= pl.movesCount) {
-						list.add(index, player);
-
-
-						return true;
-					}
-					index++;
-				}
-			}
+		else {
+			return false;
 		}
-		return false;
 	}
-	void printBoard(LinkedList list){
+	void printBoard(LinkedList<Player> list){
 		System.out.println("Score :");
 		for(int i=0;i<list.size();i++){
 			Player p = (Player) list.get(i);
